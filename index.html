@@ -1,1 +1,122 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EFOOT HUB</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #090909;
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: #e50914;
+      padding: 25px 12px;
+    }
+    header h1 { margin: 0; font-size: 32px; }
+    header p { margin-bottom: 0; }
+    main { padding: 20px 14px; }
+    .card {
+      background: #181818;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 18px auto;
+      max-width: 420px;
+    }
+    .price { color: #ff333d; font-size: 27px; font-weight: bold; }
+    .btn {
+      display: inline-block;
+      background: #e50914;
+      color: white;
+      padding: 13px 20px;
+      border: 0;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    input, select, textarea {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 7px;
+      border: 1px solid #444;
+      background: #222;
+      color: white;
+      font-size: 16px;
+    }
+    footer { padding: 20px; color: #aaa; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚽ EFOOT HUB</h1>
+    <p>Le hub de tes edits eFootball 🔥</p>
+  </header>
+
+  <main>
+    <h2>Nos services</h2>
+    <p>Donne un nouveau style à ton équipe !</p>
+
+    <div class="card">
+      <h2>🔴 SIMPLE EDIT</h2>
+      <p>Effets et design pour ta capture d'équipe.</p>
+      <p class="price">500 FCFA</p>
+    </div>
+
+    <div class="card">
+      <h2>🔥 PREMIUM EDIT</h2>
+      <p>Design avancé, flammes et effets lumineux.</p>
+      <p class="price">1 000 FCFA</p>
+    </div>
+
+    <div class="card">
+      <h2>📩 Commander un edit</h2>
+      <form id="orderForm">
+        <input id="name" placeholder="Ton pseudo" required>
+        <select id="service" required>
+          <option value="">Choisis ton service</option>
+          <option>Simple Edit — 500 FCFA</option>
+          <option>Premium Edit — 1 000 FCFA</option>
+        </select>
+        <textarea id="details" placeholder="Décris ton edit (facultatif)"></textarea>
+        <button class="btn" type="submit">Préparer ma commande</button>
+      </form>
+      <p id="message"></p>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 EFOOT HUB — Tous droits réservés.
+  </footer>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const service = document.getElementById("service").value;
+      const details = document.getElementById("details").value;
+      const message =
+        "Bonjour EFOOT HUB ! Je veux commander un edit.%0A" +
+        "Pseudo : " + encodeURIComponent(name) + "%0A" +
+        "Service : " + encodeURIComponent(service) + "%0A" +
+        "Détails : " + encodeURIComponent(details);
+
+      document.getElementById("message").innerHTML =
+        '<a class="btn" href="#" id="sendOrder">Continuer sur WhatsApp</a>';
+
+      document.getElementById("sendOrder").onclick = function() {
+        alert("Il faut ajouter ton numéro WhatsApp dans le code pour activer cette fonction.");
+      };
+    });
+  </script>
+</body>
+</html>
+
