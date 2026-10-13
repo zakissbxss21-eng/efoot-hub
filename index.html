@@ -97,26 +97,29 @@
     © 2026 EFOOT HUB — Tous droits réservés.
   </footer>
 
-  <script>
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const service = document.getElementById("service").value;
-      const details = document.getElementById("details").value;
-      const message =
-        "Bonjour EFOOT HUB ! Je veux commander un edit.%0A" +
-        "Pseudo : " + encodeURIComponent(name) + "%0A" +
-        "Service : " + encodeURIComponent(service) + "%0A" +
-        "Détails : " + encodeURIComponent(details);
+  
+<script>
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-      document.getElementById("message").innerHTML =
-        '<a class="btn" href="#" id="sendOrder">Continuer sur WhatsApp</a>';
+  const name = document.getElementById("name").value;
+  const service = document.getElementById("service").value;
+  const details = document.getElementById("details").value;
 
-      document.getElementById("sendOrder").onclick = function() {
-        alert("Il faut ajouter ton numéro WhatsApp dans le code pour activer cette fonction.");
-      };
-    });
-  </script>
+  const message =
+    "Bonjour EFOOT HUB ! Je veux commander un edit.\n" +
+    "Pseudo : " + name + "\n" +
+    "Service : " + service + "\n" +
+    "Détails : " + details;
+
+  const whatsappNumber = "22604518402";
+  const url = "https://wa.me/" + whatsappNumber +
+    "?text=" + encodeURIComponent(message);
+
+  window.location.href = url;
+});
+</script>
+  
 </body>
 </html>
 
