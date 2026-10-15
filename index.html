@@ -98,6 +98,7 @@
   </footer>
 
   
+
 <script>
 document.getElementById("orderForm").addEventListener("submit", function(e) {
   e.preventDefault();
@@ -106,11 +107,21 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   const service = document.getElementById("service").value;
   const details = document.getElementById("details").value;
 
+  let price = "À confirmer";
+
+  if (service.toLowerCase().includes("simple")) {
+    price = "500 FCFA";
+  } else if (service.toLowerCase().includes("premium")) {
+    price = "1000 FCFA";
+  }
+
   const message =
     "Bonjour EFOOT HUB ! Je veux commander un edit.\n" +
     "Pseudo : " + name + "\n" +
     "Service : " + service + "\n" +
-    "Détails : " + details;
+    "Prix : " + price + "\n" +
+    "Détails : " + details + "\n\n" +
+    "Je souhaite payer. Merci de m'envoyer les instructions de paiement.";
 
   const whatsappNumber = "22604518402";
   const url = "https://wa.me/" + whatsappNumber +
@@ -119,6 +130,7 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   window.location.href = url;
 });
 </script>
+  
   
 </body>
 </html>
